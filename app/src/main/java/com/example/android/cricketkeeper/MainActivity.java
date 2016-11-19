@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void WicketForTeamA(View v) {
-        if (OutA == 10) {
+        if (OutA == 9) {
             AllOutForTeamA(RunA, Msg);
         } else {
             OutA = OutA + 1;
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void WicketForTeamB(View v) {
-        if (OutB == 10) {
+        if (OutB == 9) {
             AllOutForTeamB(RunB, Msg);
         } else {
             OutB = OutB + 1;
