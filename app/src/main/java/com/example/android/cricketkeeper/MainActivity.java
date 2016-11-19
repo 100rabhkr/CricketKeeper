@@ -1,6 +1,8 @@
 package com.example.android.cricketkeeper;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     String Msg = "All Out";
     int RunB = 0;
     int OutB = 0;
+    View.OnClickListener mOnClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,13 +129,38 @@ public class MainActivity extends AppCompatActivity {
             if (RunA > RunB){
                 String Disp;
                 Disp = "Team A Wins By " + (RunA - RunB) + " Runs";
-                Toast.makeText(getApplicationContext(), Disp , Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), Disp , Toast.LENGTH_LONG).show();
+                Snackbar.make(findViewById(android.R.id.content), Disp, Snackbar.LENGTH_LONG)
+                        .setAction("Reset", mOnClickListener)
+                        .setActionTextColor(Color.RED)
+                        .show();
+
             }
+
             else {
                 String DispB;
                 DispB = "Team B Wins By " + (RunB - RunA) + " Runs";
                 Toast.makeText(getApplicationContext(), DispB , Toast.LENGTH_LONG).show();
             }
+            mOnClickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    RunA = 0;
+                    RunB = 0;
+                    OutA = 0;
+                    OutB = 0;
+                    displayForTeamA(RunA, OutA);
+                    displayForTeamB(RunB, OutB);
+                    findViewById(R.id.wikB).setClickable(true);
+                    findViewById(R.id.pls1B).setClickable(true);
+                    findViewById(R.id.pls4B).setClickable(true);
+                    findViewById(R.id.pls6B).setClickable(true);
+                    findViewById(R.id.wikA).setClickable(true);
+                    findViewById(R.id.pls1A).setClickable(true);
+                    findViewById(R.id.pls4A).setClickable(true);
+                    findViewById(R.id.pls6A).setClickable(true);
+                }
+            };
         }
 
     }
