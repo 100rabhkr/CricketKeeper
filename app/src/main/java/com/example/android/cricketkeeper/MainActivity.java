@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreView = (TextView) findViewById(R.id.scoreTeamA);
         String TotalScoreA = "Total Score: " + score + "/" + Msg;
         scoreView.setText(TotalScoreA);
+        chkWin();
         findViewById(R.id.wikA).setClickable(false);
         findViewById(R.id.pls1A).setClickable(false);
         findViewById(R.id.pls4A).setClickable(false);
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreView = (TextView) findViewById(R.id.scoreTeamB);
         String TotalScoreB = "Total Score: " + score + "/" + Msg;
         scoreView.setText(TotalScoreB);
+        chkWin();
         findViewById(R.id.wikB).setClickable(false);
         findViewById(R.id.pls1B).setClickable(false);
         findViewById(R.id.pls4B).setClickable(false);
@@ -116,6 +119,22 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.pls1A).setClickable(true);
         findViewById(R.id.pls4A).setClickable(true);
         findViewById(R.id.pls6A).setClickable(true);
+    }
+
+    private void chkWin(){
+        if (OutA == 9 && OutB ==9){
+            if (RunA > RunB){
+                String Disp;
+                Disp = "Team A Wins By " + (RunA - RunB) + " Runs";
+                Toast.makeText(getApplicationContext(), Disp , Toast.LENGTH_LONG).show();
+            }
+            else {
+                String DispB;
+                DispB = "Team B Wins By " + (RunB - RunA) + " Runs";
+                Toast.makeText(getApplicationContext(), DispB , Toast.LENGTH_LONG).show();
+            }
+        }
+
     }
 
 
